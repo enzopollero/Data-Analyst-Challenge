@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: snowflake
+    database: MY_DB
+    schema: MY_SCHEMA_REPLICA_PROD
+    tables:
+      - name: BUSINESS
+      - name: BUSINESS_PRODUCT
+      - name: CUSTOMER
+      - name: INVOICES
+      - name: INVOICE_ADVANCE
