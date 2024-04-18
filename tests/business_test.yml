@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: business
+    columns:
+      - name: id
+        description: |
+          Id de la entidad business.
+          Es único y no puede ser nulo.
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: |
+          Estado de la entidad business.
+          Puede ser 'active' o 'inactive'.
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive']
+      - name: name
+        description: |
+          Nombre del business.
+      - name: tax_id
+        description: |
+          Identificador tributario del business.
+      - name: registration_number
+        description: |
+          Número con el cual se registró el business.
+          Suele ser igual al tax_id.
+      - name: type
+        description: |
+          Tipo de business.
+          Puede ser 'exporter' o 'forwarder'.
+      - name: address
+        description: |
+          Dirección del business.
+          Este dato se replicó aquí por cuestiones de diseño en el backend.
+      - name: _fivetran_deleted
+        description: |
+          Fecha en la cual se eliminó el registro del transaccional.
+          Si no tiene valor es porque aún existe.
+      - name: _fivetran_synced
+        description: |
+          Fecha en la cual se replicó el registro por primera vez.
