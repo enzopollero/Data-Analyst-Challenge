@@ -4,7 +4,7 @@ WITH emisiones AS (
         TO_DATE(ISSUED_AT) AS fecha_emision,
         ROW_NUMBER() OVER(PARTITION BY ISSUER_RFC ORDER BY TO_DATE(ISSUED_AT)) AS rn
     FROM
-        {{source('snowflake','INVOICES')}}
+         {{ ref('invoices')}}
     WHERE
         TYPE = 'I'
         AND ISSUED_AT >= DATEADD(MONTH, -24, CURRENT_DATE()) -- Últimos 24 meses

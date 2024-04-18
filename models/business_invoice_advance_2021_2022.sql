@@ -11,7 +11,7 @@ SELECT
     COUNT(CASE WHEN bp.YEAR = 2021 THEN 1 END) AS count_2021,
     COUNT(CASE WHEN bp.YEAR = 2022 THEN 1 END) AS count_2022
 FROM  
-    {{ source('snowflake', 'BUSINESS') }} b
+     {{ ref('business')}} b
 LEFT JOIN (
     SELECT
         BUSINESS_ID,
@@ -19,7 +19,7 @@ LEFT JOIN (
         STATUS,
         EXTRACT(YEAR FROM CREATED_AT) AS YEAR
     FROM  
-        {{ source('snowflake', 'BUSINESS_PRODUCT') }}
+      {{ ref('business_product')}}
     WHERE
         PRODUCT_NAME = 'Invoice advance'
         AND STATUS = 'active'

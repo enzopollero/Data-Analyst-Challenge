@@ -11,9 +11,9 @@ SELECT
     ia.currency,
     ia.state
 FROM
-   {{source('snowflake','BUSINESS_PRODUCT')}} bp
+    {{ ref('business_product')}} bp
 LEFT JOIN
-    {{source('snowflake','INVOICE_ADVANCE')}} ia
+    {{ ref('invoice_advance')}} ia
 ON
     bp.id = ia.business_product_id
     AND ia.currency = 'USD'
