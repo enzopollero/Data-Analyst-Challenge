@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: customer
+    columns:
+      - name: id
+        description: |
+          Id de la entidad customer.
+          Es único y no puede ser nulo.
+        tests:
+          - unique
+          - not_null
+      - name: applicant_id
+        description: |
+          Id de la solicitud del cliente para formar parte de la organización.
+      - name: status
+        description: |
+          Estado del cliente.
+          Puede ser 'active' o 'inactive'.
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive']
+      - name: tax_id
+        description: |
+          Identificador tributario del cliente.
+      - name: address
+        description: |
+          Dirección del cliente.
+      - name: email
+        description: |
+          Email de contacto del cliente.
+      - name: phone_number
+        description: |
+          Número de teléfono del cliente.
+      - name: first_name
+        description: |
+          Primer nombre del cliente.
+      - name: last_name
+        description: |
+          Apellido del cliente.
+      - name: version
+        description: |
+          Versión del registro.
+          Cada modificación aumenta en 1 la versión.
+      - name: _fivetran_deleted
+        description: |
+          Fecha en la cual se eliminó el registro del transaccional.
+          Si no tiene valor es porque aún existe.
+      - name: _fivetran_synced
+        description: |
+          Fecha en la cual se replicó el registro por primera vez.
